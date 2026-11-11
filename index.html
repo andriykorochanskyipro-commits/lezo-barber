@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================
+  ДЕМО-САЙТ №2: Барбершоп «Лезо»
+  Новое по сравнению с кофейней:
+    1) ФОРМА ЗАПИСИ (<form>) — поля, которые заполняет клиент;
+    2) проверка формы на JavaScript (script.js);
+    3) раскрывающиеся вопросы-ответы (<details>) — работают БЕЗ JavaScript;
+    4) галерея работ.
+  ==========================================================
+-->
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Барбершоп «Лезо» — чоловічі стрижки та гоління у Львові</title>
+  <meta name="description" content="Барбершоп «Лезо» у Львові: чоловічі стрижки, оформлення бороди, королівське гоління. Онлайн-запис за 1 хвилину.">
+
+  <!-- Шрифты: Oswald (узкий, «мужской») для заголовков и Inter для текста. Оба с кириллицей -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ===================== ШАПКА ===================== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#top" class="logo">ЛЕЗО<span>/</span>barber</a>
+
+      <nav class="nav" id="nav">
+        <a href="#services">Послуги</a>
+        <a href="#works">Роботи</a>
+        <a href="#team">Майстри</a>
+        <a href="#faq">Питання</a>
+        <a href="#contacts">Контакти</a>
+      </nav>
+
+      <a href="#booking" class="btn btn--small header__cta">Записатися</a>
+
+      <button class="burger" id="burger" aria-label="Відкрити меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== ГЛАВНЫЙ ЭКРАН ===================== -->
+  <!-- Здесь фото стоит ФОНОМ на весь экран (задаётся в style.css, класс .hero) -->
+  <section class="hero" id="top">
+    <div class="container hero__content">
+      <p class="eyebrow">Барбершоп · Львів, площа Ринок</p>
+      <h1>Стрижка, після якої<br><span>хочеться</span> фотографуватись</h1>
+      <p class="hero__lead">Чоловічі стрижки, борода та гоління небезпечною бритвою. Без черг — за записом.</p>
+      <div class="hero__buttons">
+        <a href="#booking" class="btn">Записатися онлайн</a>
+        <a href="#services" class="btn btn--ghost">Ціни</a>
+      </div>
+    </div>
+
+    <!-- Полоса с фактами внизу главного экрана -->
+    <div class="hero__stats">
+      <div class="container hero__stats-inner">
+        <div><strong>8 років</strong><span>працюємо у Львові</span></div>
+        <div><strong>12 000+</strong><span>стрижок зроблено</span></div>
+        <div><strong>4,9 ★</strong><span>рейтинг у Google</span></div>
+        <div><strong>10:00–21:00</strong><span>без вихідних</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== УСЛУГИ И ЦЕНЫ ===================== -->
+  <section class="services section" id="services">
+    <div class="container">
+      <p class="eyebrow">Послуги</p>
+      <h2>Що ми робимо</h2>
+
+      <!-- Каждая услуга — карточка. Кнопка «Обрати» сразу подставляет услугу в форму записи (см. script.js) -->
+      <div class="services__grid">
+        <article class="service">
+          <span class="service__time">45 хв</span>
+          <h3>Чоловіча стрижка</h3>
+          <p>Консультація, миття голови, стрижка, укладка.</p>
+          <div class="service__bottom">
+            <b>500 ₴</b>
+            <a href="#booking" class="service__pick" data-service="Чоловіча стрижка">Обрати →</a>
+          </div>
+        </article>
+
+        <article class="service">
+          <span class="service__time">30 хв</span>
+          <h3>Оформлення бороди</h3>
+          <p>Форма, контур, гарячий рушник, догляд олією.</p>
+          <div class="service__bottom">
+            <b>350 ₴</b>
+            <a href="#booking" class="service__pick" data-service="Оформлення бороди">Обрати →</a>
+          </div>
+        </article>
+
+        <article class="service service--featured">
+          <span class="service__badge">Хіт</span>
+          <span class="service__time">75 хв</span>
+          <h3>Стрижка + борода</h3>
+          <p>Повний образ за один візит. Вигідніше на 100 ₴.</p>
+          <div class="service__bottom">
+            <b>750 ₴</b>
+            <a href="#booking" class="service__pick" data-service="Стрижка + борода">Обрати →</a>
+          </div>
+        </article>
+
+        <article class="service">
+          <span class="service__time">40 хв</span>
+          <h3>Королівське гоління</h3>
+          <p>Небезпечна бритва, гарячі рушники, бальзам.</p>
+          <div class="service__bottom">
+            <b>450 ₴</b>
+            <a href="#booking" class="service__pick" data-service="Королівське гоління">Обрати →</a>
+          </div>
+        </article>
+
+        <article class="service">
+          <span class="service__time">30 хв</span>
+          <h3>Дитяча стрижка</h3>
+          <p>Для хлопців до 12 років. Мультики додаються.</p>
+          <div class="service__bottom">
+            <b>350 ₴</b>
+            <a href="#booking" class="service__pick" data-service="Дитяча стрижка">Обрати →</a>
+          </div>
+        </article>
+
+        <article class="service">
+          <span class="service__time">20 хв</span>
+          <h3>Камуфлювання сивини</h3>
+          <p>Природний результат без ефекту «фарбованого».</p>
+          <div class="service__bottom">
+            <b>400 ₴</b>
+            <a href="#booking" class="service__pick" data-service="Камуфлювання сивини">Обрати →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ГАЛЕРЕЯ РАБОТ ===================== -->
+  <!-- Сетка из фото разного размера. Если фото не загрузится, вместо него будет тёмная плашка (см. style.css) -->
+  <section class="works section" id="works">
+    <div class="container">
+      <p class="eyebrow">Роботи</p>
+      <h2>Наші стрижки</h2>
+      <div class="works__grid">
+        <img class="works__big" src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=80" alt="Барбер робить стрижку" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=600&q=80" alt="Оформлення бороди" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=600&q=80" alt="Стрижка машинкою" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80" alt="Готова стрижка" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?auto=format&fit=crop&w=600&q=80" alt="Робота барбера" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== МАСТЕРА ===================== -->
+  <section class="team section" id="team">
+    <div class="container">
+      <p class="eyebrow">Майстри</p>
+      <h2>Хто вас підстриже</h2>
+      <div class="team__grid">
+        <!-- Вместо фото мастеров — инициалы в кружке. На реальном сайте вставим настоящие фото -->
+        <div class="master">
+          <div class="master__avatar">ТК</div>
+          <h3>Тарас</h3>
+          <p>Топ-барбер · 8 років досвіду</p>
+          <span>Класика, фейди, гоління</span>
+        </div>
+        <div class="master">
+          <div class="master__avatar">АМ</div>
+          <h3>Андрій</h3>
+          <p>Барбер · 5 років досвіду</p>
+          <span>Текстурні стрижки, борода</span>
+        </div>
+        <div class="master">
+          <div class="master__avatar">ОС</div>
+          <h3>Остап</h3>
+          <p>Барбер · 3 роки досвіду</p>
+          <span>Сучасні форми, дитячі стрижки</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ФОРМА ЗАПИСИ ===================== -->
+  <!--
+    Главная новинка этого сайта.
+    <form> — форма, <label> — подпись поля, <input> — поле ввода, <select> — выпадающий список.
+    required = поле обязательное. novalidate = отключаем стандартные подсказки браузера,
+    потому что проверку делаем сами, красивее (в script.js).
+  -->
+  <section class="booking section" id="booking">
+    <div class="container booking__inner">
+      <div class="booking__text">
+        <p class="eyebrow">Онлайн-запис</p>
+        <h2>Запишіться за хвилину</h2>
+        <p>Залиште заявку — адміністратор зателефонує протягом 15 хвилин і підтвердить час.</p>
+        <ul class="booking__perks">
+          <li>Нагадаємо про візит за 2 години</li>
+          <li>Перенести чи скасувати — одним дзвінком</li>
+          <li>Кава або чай для кожного гостя</li>
+        </ul>
+      </div>
+
+      <form class="form" id="bookingForm" novalidate>
+        <div class="form__row">
+          <label class="field">
+            <span>Ваше ім'я *</span>
+            <input type="text" name="name" placeholder="Наприклад, Олег" required>
+            <small class="field__error">Вкажіть, будь ласка, ім'я</small>
+          </label>
+          <label class="field">
+            <span>Телефон *</span>
+            <input type="tel" name="phone" placeholder="+380 __ ___ __ __" required>
+            <small class="field__error">Введіть номер повністю, наприклад +380 67 123 45 67</small>
+          </label>
+        </div>
+
+        <div class="form__row">
+          <label class="field">
+            <span>Послуга *</span>
+            <select name="service" id="serviceSelect" required>
+              <option value="">Оберіть послугу</option>
+              <option>Чоловіча стрижка</option>
+              <option>Оформлення бороди</option>
+              <option>Стрижка + борода</option>
+              <option>Королівське гоління</option>
+              <option>Дитяча стрижка</option>
+              <option>Камуфлювання сивини</option>
+            </select>
+            <small class="field__error">Оберіть послугу</small>
+          </label>
+          <label class="field">
+            <span>Майстер</span>
+            <select name="master">
+              <option>Будь-який вільний</option>
+              <option>Тарас</option>
+              <option>Андрій</option>
+              <option>Остап</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form__row">
+          <label class="field">
+            <span>Дата *</span>
+            <input type="date" name="date" id="dateInput" required>
+            <small class="field__error">Оберіть дату</small>
+          </label>
+          <label class="field">
+            <span>Час *</span>
+            <select name="time" id="timeSelect" required>
+              <option value="">Оберіть час</option>
+              <option>10:00</option><option>11:00</option><option>12:00</option>
+              <option>13:00</option><option>14:00</option><option>15:00</option>
+              <option>16:00</option><option>17:00</option><option>18:00</option>
+              <option>19:00</option><option>20:00</option>
+            </select>
+            <small class="field__error">Оберіть час</small>
+          </label>
+        </div>
+
+        <!-- Ловушка для спам-ботов: поле скрыто от людей, его заполняют только роботы -->
+        <input type="text" name="website" class="form__trap" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <label class="field">
+          <span>Коментар</span>
+          <textarea name="comment" rows="3" placeholder="Побажання до стрижки (необов'язково)"></textarea>
+        </label>
+
+        <button type="submit" class="btn btn--full">Записатися</button>
+        <!-- Сообщение на случай, если заявка не отправилась (нет интернета, ошибка Telegram) -->
+        <p class="form__error" id="formError" hidden>
+          Не вдалося надіслати заявку. Будь ласка, зателефонуйте нам:
+          <a href="tel:+380671234567">+38 (067) 123-45-67</a>
+        </p>
+        <p class="form__note">Натискаючи кнопку, ви погоджуєтесь на обробку персональних даних.</p>
+      </form>
+
+      <!-- Окно «Спасибо». Скрыто, пока форма не отправлена -->
+      <div class="success" id="success" hidden>
+        <div class="success__icon">✓</div>
+        <h3>Дякуємо, заявку прийнято!</h3>
+        <p id="successText"></p>
+        <button class="btn btn--ghost" id="newBooking">Новий запис</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ВОПРОСЫ-ОТВЕТЫ ===================== -->
+  <!-- <details> и <summary> — встроенный в HTML «раскрывашка». Клик по вопросу показывает ответ -->
+  <section class="faq section" id="faq">
+    <div class="container faq__inner">
+      <p class="eyebrow">Питання</p>
+      <h2>Часті запитання</h2>
+      <details>
+        <summary>Чи можна прийти без запису?</summary>
+        <p>Так, якщо є вільний майстер. Але щоб не чекати, краще записатися онлайн або за телефоном.</p>
+      </details>
+      <details>
+        <summary>Як скасувати або перенести запис?</summary>
+        <p>Зателефонуйте нам щонайменше за 2 години до візиту — перенесемо без проблем.</p>
+      </details>
+      <details>
+        <summary>Чи приймаєте оплату карткою?</summary>
+        <p>Так: картка, Apple Pay, Google Pay або готівка.</p>
+      </details>
+      <details>
+        <summary>Є подарункові сертифікати?</summary>
+        <p>Так, на будь-яку послугу або суму від 300 ₴. Оформлюємо на місці чи онлайн.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===================== КОНТАКТЫ ===================== -->
+  <section class="contacts section" id="contacts">
+    <div class="container contacts__inner">
+      <div>
+        <p class="eyebrow">Контакти</p>
+        <h2>Як нас знайти</h2>
+        <p><strong>Адреса:</strong> Львів, площа Ринок, 24</p>
+        <p><strong>Графік:</strong> щодня 10:00–21:00</p>
+        <p><strong>Телефон:</strong> <a href="tel:+380671234567">+38 (067) 123-45-67</a></p>
+        <p><strong>Instagram:</strong> <a href="#">@lezo.barber</a></p>
+      </div>
+      <div class="contacts__map">
+        <iframe src="https://www.google.com/maps?q=Львів,+площа+Ринок,+24&output=embed" loading="lazy" title="Карта: барбершоп Лезо"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#top" class="logo">ЛЕЗО<span>/</span>barber</a>
+      <p>© 2026 Барбершоп «Лезо». Демо-проєкт.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
